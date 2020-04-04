@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/home.dart';
 import 'package:instagram_clone/profile_screen.dart';
 
 void main() => runApp(MyApp());
@@ -76,7 +77,7 @@ class Tabbar extends StatelessWidget {
           indicatorColor: Colors.transparent,
         ),
         body: TabBarView(children: [
-          ProfileScreen(),
+          HomePost(),
           ProfileScreen(),
           ProfileScreen(),
           ProfileScreen(),
