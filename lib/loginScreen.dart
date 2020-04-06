@@ -118,6 +118,22 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
+          Row(
+            children: <Widget>[
+              Divider(),
+              Text('OU'),
+              Divider(),
+              Container(
+                width: 100,
+                height: 50,
+                child: RaisedButton(
+                  child: Text('Facebook'),
+                  color: Colors.blue,
+                  onPressed: () {},
+                ),
+              )
+            ],
+          )
         ],
       ),
     );
