@@ -19,12 +19,24 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget body() {
-    return Container(
-      alignment: Alignment.center,
-      color: Colors.white,
+    return SafeArea(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                GestureDetector(
+                  child: Text(
+                    'portugues (Brasil)',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                )
+              ],
+            ),
+          ),
           Form(
             child: Padding(
               padding: const EdgeInsets.all(30.0),
@@ -94,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -114,25 +126,99 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      child: GestureDetector(
+                        child: Text(
+                          'Entrar com o Facebook',
+                          style: TextStyle(
+                              color: Colors.blue, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              width: 120,
+                              child: Divider(
+                                color: Colors.grey,
+                              )),
+                        ),
+                        Text(
+                          'OU',
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 120,
+                            child: Divider(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: GestureDetector(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Não tem conta? ',
+                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                          ),
+                          Text(
+                            'Cadastre-se',
+                            style: TextStyle(
+                                color: Colors.blue[900],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          Row(
-            children: <Widget>[
-              Divider(),
-              Text('OU'),
-              Divider(),
-              Container(
-                width: 100,
-                height: 50,
-                child: RaisedButton(
-                  child: Text('Facebook'),
-                  color: Colors.blue,
-                  onPressed: () {},
+          Container(
+            child: Column(
+              children: <Widget>[
+                Divider(
+                  color: Colors.grey,
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            'from',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          Text(
+                            'Facebook',
+                            style: TextStyle(fontSize: 20),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),
