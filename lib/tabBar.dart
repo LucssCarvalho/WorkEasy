@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/home.dart';
-import 'package:instagram_clone/profile_screen.dart';
+import 'package:instagram_clone/tabs/homeTab.dart';
+import 'package:instagram_clone/tabs/profileTab.dart';
 
 class Tabbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 2,
       child: Scaffold(
         bottomNavigationBar: TabBar(
           tabs: [
@@ -26,32 +26,6 @@ class Tabbar extends StatelessWidget {
                 ),
               ),
             ),
-            Tab(
-              child: Container(
-                child: Icon(
-                  Icons.add_box,
-                  size: 25,
-                ),
-              ),
-            ),
-            Tab(
-              child: Container(
-                child: Icon(
-                  Icons.favorite,
-                  size: 25,
-                ),
-              ),
-            ),
-            Tab(
-              child: Container(
-                child: CircleAvatar(
-                  backgroundColor: Colors.grey[800],
-                  radius: 12,
-                  child:
-                      CircleAvatar(backgroundColor: Colors.green, radius: 10),
-                ),
-              ),
-            ),
           ],
           indicatorWeight: 2,
           labelStyle: TextStyle(fontSize: 10),
@@ -61,9 +35,6 @@ class Tabbar extends StatelessWidget {
         ),
         body: TabBarView(children: [
           HomePost(),
-          ProfileScreen(),
-          ProfileScreen(),
-          ProfileScreen(),
           ProfileScreen(),
         ]),
       ),
