@@ -1,4 +1,4 @@
-package com.example.instagram_clone
+package com.carvalho.instagram_clone
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
