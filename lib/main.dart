@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child, model) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
+            title: 'Instagram clone',
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
