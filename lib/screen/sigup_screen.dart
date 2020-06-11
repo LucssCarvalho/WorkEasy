@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/modal/user_modal.dart';
+import 'package:instagram_clone/model/user_modal.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -150,7 +150,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 "email": _emailController.text,
                                 "followers": 0,
                                 "following": 0,
-                                "publications": 0
+                                "publications": 0,
+                                "bio": "",
+                                "images": []
                               };
 
                               model.signUp(

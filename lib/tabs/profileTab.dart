@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/modal/user_modal.dart';
+import 'package:instagram_clone/model/user_modal.dart';
 import 'package:instagram_clone/screen/loginScreen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -108,12 +108,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   title: Text('Sair'),
                   onTap: () {
+                    Navigator.pop(context);
+                    model.signOut();
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => LoginScreen(),
                       ),
                     );
-                    model.signOut();
                   },
                 )
               ],
@@ -137,8 +138,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(model.userData['images'][index]))),
+              image: DecorationImage(
+                image: NetworkImage(model.userData['images'][index]),
+              ),
+            ),
           );
         },
       ),
@@ -229,18 +232,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          CircleAvatar(
-            radius: 50.0,
-            child: Container(
-              decoration: new BoxDecoration(
-                shape: BoxShape.circle,
-                image: new DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(model.userData["imageProfile"]),
+          model.userData["imageProfile"] != null
+              ? CircleAvatar(
+                  radius: 50.0,
+                  child: Container(
+                    decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(model.userData["imageProfile"]),
+                      ),
+                    ),
+                  ),
+                )
+              : CircleAvatar(
+                  radius: 50.0,
+                  child: Container(
+                    color: Colors.blue,
+                  ),
                 ),
-              ),
-            ),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[

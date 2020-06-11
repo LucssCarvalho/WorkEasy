@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/modal/user_modal.dart';
+import 'package:instagram_clone/model/user_modal.dart';
 import 'package:instagram_clone/screen/sigup_screen.dart';
 import 'package:instagram_clone/tabBar.dart';
 import 'package:scoped_model/scoped_model.dart';
