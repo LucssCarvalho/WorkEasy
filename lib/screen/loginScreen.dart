@@ -20,30 +20,17 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: body(),
+      bottomNavigationBar: bottomBar(),
     );
   }
 
   Widget body() {
-    return Scaffold(
-      key: _scaffoldKey,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return SafeArea(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                GestureDetector(
-                  child: Text(
-                    'portugues (Brasil)',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                )
-              ],
-            ),
-          ),
           Container(
             child: ScopedModelDescendant<UserModel>(
               builder: (context, child, model) {
@@ -221,34 +208,28 @@ class _LoginScreenState extends State<LoginScreen> {
               },
             ),
           ),
-          Container(
-            child: Column(
-              children: <Widget>[
-                Divider(
-                  color: Colors.grey,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            'from',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                          Text(
-                            'Facebook',
-                            style: TextStyle(fontSize: 20),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
+        ],
+      ),
+    );
+  }
+
+  Widget bottomBar() {
+    return Container(
+      height: 50,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Text(
+                'from',
+                style: TextStyle(color: Colors.grey),
+              ),
+              Text(
+                'Facebook',
+                style: TextStyle(fontSize: 20),
+              )
+            ],
           )
         ],
       ),
