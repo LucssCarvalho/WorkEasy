@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/model/user_modal.dart';
-import 'package:instagram_clone/screen/sigup_screen.dart';
-import 'package:instagram_clone/tabBar.dart';
+import 'package:WorkEasy/model/user_modal.dart';
+import 'package:WorkEasy/screen/homeScreen.dart';
+import 'package:WorkEasy/screen/signUp_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,8 +12,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _emailController = TextEditingController();
-  final _passController = TextEditingController();
+  final _emailController = TextEditingController(text: 'lucas@gmail.com');
+  final _passController = TextEditingController(text: '123456');
 
   bool _showPassword = true;
 
@@ -22,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       key: _scaffoldKey,
       body: body(),
-      bottomNavigationBar: bottomBar(),
     );
   }
 
@@ -44,7 +43,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.all(30.0),
                     child: Column(
                       children: <Widget>[
-                        logo(),
+                        Text(
+                          'Trampandinho',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: TextField(
@@ -90,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: RaisedButton(
-                            color: Colors.blue,
+                            color: Colors.purple,
                             child: Container(
                               alignment: Alignment.center,
                               width: 300,
@@ -109,74 +114,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                'Esqueceu seus dados de login? ',
-                                style:
-                                    TextStyle(fontSize: 12, color: Colors.grey),
-                              ),
-                              GestureDetector(
-                                child: Text(
-                                  'Obtenha ajuda para entrar',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12,
-                                      color: Colors.blue[900]),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            child: GestureDetector(
-                              child: Text(
-                                'Entrar com o Facebook',
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                    width: 120,
-                                    child: Divider(
-                                      color: Colors.grey,
-                                    )),
-                              ),
-                              Text(
-                                'OU',
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  width: 120,
-                                  child: Divider(
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                        SizedBox(
+                          height: 20,
                         ),
                         Container(
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pushReplacement(
+                              Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => SignUpScreen(),
                                 ),
@@ -193,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Text(
                                   'Cadastre-se',
                                   style: TextStyle(
-                                      color: Colors.blue[900],
+                                      color: Colors.purple[900],
                                       fontWeight: FontWeight.bold,
                                       fontSize: 12),
                                 ),
@@ -213,32 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget bottomBar() {
-    return Container(
-      height: 50,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              Text(
-                'from',
-                style: TextStyle(color: Colors.grey),
-              ),
-              Text(
-                'Facebook',
-                style: TextStyle(fontSize: 20),
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
   void _onSucess() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => Tabbar(),
+      builder: (context) => HomeScreen(),
     ));
   }
 
@@ -250,17 +171,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         backgroundColor: Colors.redAccent,
         duration: Duration(seconds: 2),
-      ),
-    );
-  }
-
-  Widget logo() {
-    return Container(
-      height: 60,
-      width: 200,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/insta_logo.png'), fit: BoxFit.cover),
       ),
     );
   }
