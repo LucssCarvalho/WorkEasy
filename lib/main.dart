@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/model/user_modal.dart';
-import 'package:instagram_clone/screen/loginScreen.dart';
+import 'package:WorkEasy/model/user_modal.dart';
+import 'package:WorkEasy/screen/loginScreen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 void main() => runApp(MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Instagram clone',
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              primarySwatch: Colors.purple,
             ),
             home: LoginScreen(),
           );
