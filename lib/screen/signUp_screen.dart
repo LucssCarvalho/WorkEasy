@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/model/user_modal.dart';
+import 'package:WorkEasy/model/user_modal.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -14,6 +14,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  int profileType;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         centerTitle: true,
       ),
       body: Container(
-        color: Colors.blue[900],
+        color: Colors.purple[50],
         child: ScopedModelDescendant<UserModel>(
           builder: (context, child, model) {
             if (model.isLoading)
@@ -50,12 +51,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Container(
                           margin: EdgeInsets.all(15),
                           child: CircleAvatar(
-                            backgroundColor: Colors.blue[500],
-                            radius: 70,
-                            child: Icon(
-                              Icons.person_add,
-                              color: Colors.white,
-                              size: 80,
+                            radius: 80,
+                            backgroundColor: Colors.purple,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 77,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.purple[500],
+                                radius: 70,
+                                child: Icon(
+                                  Icons.person_add,
+                                  color: Colors.white,
+                                  size: 80,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -136,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: Text(
                               'CADASTRAR',
                               style: TextStyle(
-                                color: Colors.blue,
+                                color: Colors.purple,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -148,11 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Map<String, dynamic> userData = {
                                 "name": _nameController.text,
                                 "email": _emailController.text,
-                                "followers": 0,
-                                "following": 0,
-                                "publications": 0,
-                                "bio": "",
-                                "images": []
+                                "profileType": profileType
                               };
 
                               model.signUp(
@@ -162,56 +167,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   onFail: _onFail);
                             }
                           },
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              child: Divider(
-                                color: Colors.white,
-                                height: 50,
-                              ),
-                            ),
-                            Text(
-                              " OU ",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Container(
-                              width: 100,
-                              child: Divider(
-                                color: Colors.white,
-                                height: 50,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: RaisedButton(
-                                color: Colors.blue,
-                                child: Text(
-                                  'Facebook',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                onPressed: () {},
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: RaisedButton(
-                                color: Colors.red,
-                                child: Text(
-                                  'Google',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                onPressed: () {},
-                              ),
-                            ),
-                          ],
                         ),
                       ],
                     ),
